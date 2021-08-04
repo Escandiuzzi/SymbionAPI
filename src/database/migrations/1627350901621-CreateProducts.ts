@@ -3,7 +3,7 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
 export class CreateProducts1627350901621 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.createTable(
+        await queryRunner.createTable(
             new Table({
                 name: 'products',
                 columns: [
@@ -13,14 +13,38 @@ export class CreateProducts1627350901621 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: 'id',
-                        type: 'uuid',
-                        isPrimary: true
+                        name: 'name',
+                        type: 'varchar',
                     },
                     {
-                        name: 'id',
-                        type: 'uuid',
-                        isPrimary: true
+                        name: 'brand',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'price',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'image_url',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'type',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'sold',
+                        type: 'integer',
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'timestamp',
+                        default: 'now()'
+                    },
+                    {
+                        name: 'upated_at',
+                        type: 'timestamp',
+                        default: 'now()'
                     },
                 ]
             })
@@ -28,6 +52,7 @@ export class CreateProducts1627350901621 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('products');
     }
 
 }
