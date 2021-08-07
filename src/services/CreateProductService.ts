@@ -30,9 +30,9 @@ class CreateProductService {
 
         const productRepository = getCustomRepository(ProductRepository);
 
-        const productAlreadyExists = productRepository.findOne({
-            name
-        });
+        // const productAlreadyExists = await productRepository.findOne({
+        //     name
+        // });
 
         const product = productRepository.create({
             name,
